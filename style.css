@@ -295,12 +295,11 @@ em{font-family:var(--serif);font-style:italic;font-weight:400}
 .bts__hint svg{width:20px;height:20px}
 .reel{position:relative;width:min(420px,34vw);aspect-ratio:9/16;max-height:82vh;background:#0c0c0c;overflow:hidden;box-shadow:0 40px 120px rgba(0,0,0,.6)}
 .reel video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.reel__play{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:14px;padding-bottom:12%;background:linear-gradient(180deg,rgba(0,0,0,.05) 40%,rgba(0,0,0,.65));border:0;color:var(--fg);font:inherit;cursor:pointer;transition:opacity .5s}
+.reel__play{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:14px;padding-bottom:7%;background:linear-gradient(180deg,rgba(0,0,0,0) 65%,rgba(0,0,0,.6));border:0;color:var(--fg);font:inherit;cursor:pointer;transition:opacity .5s}
 .reel__play span{width:76px;height:76px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(255,255,255,.75);background:rgba(0,0,0,.25);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:background .5s,color .5s,transform .6s var(--ease)}
 .reel__play svg{width:30px;height:30px;margin-left:4px}
 .reel__play:hover span{background:var(--accent);border-color:var(--accent);color:#000;transform:scale(1.08)}
 .reel__play b{font-weight:400;font-size:14px;letter-spacing:.04em}
-.reel.is-playing .reel__play{opacity:0;pointer-events:none}
 @media (max-width:900px){
   .bts{grid-template-columns:minmax(0,1fr);justify-items:start}
   .reel{width:min(340px,82vw);justify-self:center}
@@ -313,3 +312,7 @@ em{font-family:var(--serif);font-style:italic;font-weight:400}
 .contact__grid small{color:rgba(10,10,10,.55)}
 .contact__grid a:hover{color:#1c8a00}
 .contact .btn:hover{box-shadow:0 0 0 8px rgba(69,255,11,.28)}
+
+.reel__play b{display:inline-flex;align-items:center;gap:10px;padding:11px 20px;border:1px solid rgba(255,255,255,.7);border-radius:999px;background:rgba(0,0,0,.3);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:background .5s,color .5s,border-color .5s}
+.reel__play b svg{width:16px;height:16px;margin:0}
+.reel__play:hover b{background:var(--accent);border-color:var(--accent);color:#000}

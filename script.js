@@ -158,6 +158,7 @@
     lenis && lenis.start(); lastFocus && lastFocus.focus();
   }
   $$('.film').forEach(b => b.addEventListener('click', () => openFilm(b)));
+  window.__openFilm = openFilm;
   $('#lbClose').addEventListener('click', closeFilm);
   lb.addEventListener('click', e => { if (e.target === lb) closeFilm(); });
   addEventListener('keydown', e => { if (e.key === 'Escape' && !lb.hidden) closeFilm(); });
@@ -188,18 +189,21 @@
   addEventListener('load', () => ScrollTrigger.refresh());
 })();
 
-/* ---------- Bastidores: vídeo vertical com áudio ---------- */
+/* ---------- Bastidores: toca sozinho (sem som) ao entrar na seção, pausa ao sair; clique expande com som ---------- */
 (() => {
   const reel = document.getElementById('reel');
   if (!reel) return;
   const v = document.getElementById('reelVideo'), btn = document.getElementById('reelPlay');
+  const lb = document.getElementById('lightbox'), lbv = document.getElementById('lbVideo');
+  let visible = false;
+  const sync = () => {
+    if (visible && (!lb || lb.hidden)) v.play().catch(() => {});
+    else v.pause();
+  };
+  new IntersectionObserver(es => es.forEach(e => { visible = e.isIntersecting; sync(); }), { threshold: 0.35 }).observe(reel);
   btn.addEventListener('click', () => {
-    v.muted = false; v.volume = 1; v.controls = true; v.preload = 'auto';
-    v.play().then(() => reel.classList.add('is-playing')).catch(() => { v.controls = true; reel.classList.add('is-playing'); });
+    v.pause();
+    if (window.__openFilm) window.__openFilm(btn);
   });
-  v.addEventListener('ended', () => { v.controls = false; v.currentTime = 0; reel.classList.remove('is-playing'); });
-  new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting && !v.paused) v.pause(); }), { threshold: 0.1 }).observe(reel);
-  const lbv = document.getElementById('lbVideo');
-  if (lbv) lbv.addEventListener('play', () => v.pause());
-  v.addEventListener('play', () => { if (lbv) lbv.pause(); });
+  if (lb) new MutationObserver(sync).observe(lb, { attributes: true, attributeFilter: ['hidden'] });
 })();
