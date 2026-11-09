@@ -63,3 +63,30 @@
 /* bloco do blog na home */
 .bloghome{padding:0 var(--gut) clamp(90px,13vw,200px)}
 .bloghome .bcard__img img{height:100%}
+/* páginas de cidade */
+.cityhero{display:flex;flex-direction:column;align-items:flex-start;gap:24px;padding-bottom:clamp(36px,5vw,64px)}
+.cityhero h1{font-size:clamp(2.6rem,6.6vw,6.2rem);margin:0}
+.cityhero__lead{max-width:40em;color:var(--mute);font-size:clamp(16px,1.3vw,19px);line-height:1.7}
+.faq{padding:0 var(--gut) clamp(56px,8vw,110px)}
+.faq__in{max-width:calc(760px);margin:0 auto}
+.faq .eyebrow{margin-bottom:14px}
+.faq h2{font-weight:200;letter-spacing:-.03em;line-height:1.05;font-size:clamp(2rem,4vw,3.4rem);margin-bottom:28px}
+.faq details{border-top:1px solid var(--line);padding:18px 0}
+.faq details:last-child{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px;font-size:clamp(16px,1.3vw,19px);font-weight:400}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--accent);font-size:1.4em;line-height:1;transition:transform .4s var(--ease)}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{margin-top:12px;color:var(--mute);font-size:15px;line-height:1.7;max-width:40em}
+.arealist{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.arealist a{display:flex;flex-direction:column;gap:8px;padding:22px;border:1px solid var(--line);border-radius:14px;height:100%;transition:border-color .4s,background .4s}
+.arealist a:hover{border-color:var(--accent);background:rgba(69,255,11,.04)}
+.arealist span{font-family:var(--serif);font-size:1.7rem;line-height:1.1}
+.arealist small{color:var(--mute);font-size:13px}
+.related--blog{background:var(--bg)}
+@media (max-width:900px){.arealist{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.arealist{grid-template-columns:1fr}}
+/* home: onde atendemos */
+.areas{padding:0 var(--gut) clamp(90px,13vw,200px)}
+.areas .arealist{margin-top:8px}
+.areas__link{color:var(--accent);border-bottom:1px solid rgba(69,255,11,.4)}
