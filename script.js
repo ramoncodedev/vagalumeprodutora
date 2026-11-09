@@ -114,6 +114,26 @@
     onEnter: els => gsap.to(els, { opacity: 1, y: 0, duration: 1.2, ease: 'expo.out', stagger: 0.12, overwrite: true })
   });
 
+  /* ---------- Processo: linha do tempo que se revela no scroll ---------- */
+  (() => {
+    const tl = $('#timeline'), fill = $('#timelineFill'), line = $('.timeline__line', tl || document);
+    if (!tl || !fill) return;
+    const steps = $$('.step', tl);
+    const fit = () => {
+      const base = tl.getBoundingClientRect().top;
+      const mid = n => { const r = n.getBoundingClientRect(); return r.top - base + r.height / 2; };
+      const y0 = mid($('.step__node', steps[0])), y1 = mid($('.step__node', steps[steps.length - 1]));
+      line.style.top = y0 + 'px'; line.style.height = Math.max(0, y1 - y0) + 'px';
+    };
+    fit(); addEventListener('resize', fit); addEventListener('load', fit);
+    gsap.to(fill, { scaleY: 1, ease: 'none', scrollTrigger: { trigger: tl, start: 'top 55%', end: 'bottom 60%', scrub: true } });
+    steps.forEach(st => {
+      const card = $('.step__card', st);
+      ScrollTrigger.create({ trigger: st, start: 'top 62%', onUpdate: self => st.classList.toggle('is-on', self.progress > 0) });
+      gsap.to(card, { opacity: 1, x: 0, duration: 1.2, ease: 'expo.out', scrollTrigger: { trigger: st, start: 'top 72%', toggleActions: 'play none none none' } });
+    });
+  })();
+
   /* ---------- Cards: máscara + parallax ---------- */
   $$('.card').forEach(card => {
     const box = $('.card__img', card), img = $('img', card);
