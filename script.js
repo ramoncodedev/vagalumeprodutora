@@ -189,21 +189,25 @@
   addEventListener('load', () => ScrollTrigger.refresh());
 })();
 
-/* ---------- Bastidores: toca sozinho (sem som) ao entrar na seção, pausa ao sair; clique expande com som ---------- */
+/* ---------- Bastidores: toca sozinho com som ao entrar na seção, pausa ao sair; clique expande ---------- */
 (() => {
   const reel = document.getElementById('reel');
   if (!reel) return;
-  const v = document.getElementById('reelVideo'), btn = document.getElementById('reelPlay');
-  const lb = document.getElementById('lightbox'), lbv = document.getElementById('lbVideo');
-  let visible = false;
-  const sync = () => {
-    if (visible && (!lb || lb.hidden)) v.play().catch(() => {});
-    else v.pause();
+  const v = document.getElementById('reelVideo'), btn = document.getElementById('reelPlay'), snd = document.getElementById('reelSound');
+  const lb = document.getElementById('lightbox');
+  let visible = false, wantSound = true;
+  const ui = () => { snd.setAttribute('aria-pressed', !v.muted); snd.setAttribute('aria-label', v.muted ? 'Ativar som' : 'Desligar som'); reel.classList.toggle('is-sound', !v.muted); };
+  const start = () => {
+    if (!visible || (lb && !lb.hidden)) return;
+    v.muted = !wantSound;
+    v.play().catch(() => { v.muted = true; v.play().catch(() => {}); }).finally(ui);
   };
-  new IntersectionObserver(es => es.forEach(e => { visible = e.isIntersecting; sync(); }), { threshold: 0.35 }).observe(reel);
-  btn.addEventListener('click', () => {
-    v.pause();
-    if (window.__openFilm) window.__openFilm(btn);
-  });
-  if (lb) new MutationObserver(sync).observe(lb, { attributes: true, attributeFilter: ['hidden'] });
+  const stop = () => v.pause();
+  new IntersectionObserver(es => es.forEach(e => { visible = e.isIntersecting; visible ? start() : stop(); }), { threshold: 0.35 }).observe(reel);
+  // o navegador só libera áudio automático depois do primeiro toque/clique/tecla: nesse momento liga o som
+  const unlock = () => { if (visible && wantSound && v.muted && (!lb || lb.hidden)) { v.muted = false; v.play().catch(() => {}); ui(); } };
+  ['pointerdown', 'keydown', 'touchend'].forEach(ev => addEventListener(ev, unlock, { passive: true }));
+  snd.addEventListener('click', e => { e.stopPropagation(); wantSound = v.muted; v.muted = !wantSound; if (v.paused) v.play().catch(() => {}); ui(); });
+  btn.addEventListener('click', () => { v.pause(); if (window.__openFilm) window.__openFilm(btn); });
+  if (lb) new MutationObserver(() => (lb.hidden ? start() : stop())).observe(lb, { attributes: true, attributeFilter: ['hidden'] });
 })();

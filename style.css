@@ -316,3 +316,9 @@ em{font-family:var(--serif);font-style:italic;font-weight:400}
 .reel__play b{display:inline-flex;align-items:center;gap:10px;padding:11px 20px;border:1px solid rgba(255,255,255,.7);border-radius:999px;background:rgba(0,0,0,.3);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:background .5s,color .5s,border-color .5s}
 .reel__play b svg{width:16px;height:16px;margin:0}
 .reel__play:hover b{background:var(--accent);border-color:var(--accent);color:#000}
+.reel__sound{position:absolute;top:16px;right:16px;z-index:3;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(255,255,255,.7);background:rgba(0,0,0,.4);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:var(--fg);cursor:pointer;transition:background .4s,color .4s,border-color .4s}
+.reel__sound svg{width:20px;height:20px}
+.reel__sound .i-on{display:none}
+.reel.is-sound .reel__sound .i-on{display:block}
+.reel.is-sound .reel__sound .i-off{display:none}
+.reel__sound:hover{background:var(--accent);border-color:var(--accent);color:#000}

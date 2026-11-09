@@ -150,7 +150,11 @@
   <div class="reel" id="reel" data-reveal>
     <video id="reelVideo" muted loop playsinline preload="metadata" poster="assets/img/poster-bastidores.jpg" aria-hidden="true"><source src="video/bastidores.mp4" type="video/mp4"></video>
     <button class="reel__play" id="reelPlay" type="button" aria-label="Expandir o vídeo de bastidores com som" data-film="video/bastidores.mp4" data-poster="assets/img/poster-bastidores.jpg" data-title="Bastidores da Vagalume Produtora" data-cursor data-label="Expandir">
-      <b><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>Expandir com som</b>
+      <b><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>Expandir</b>
+    </button>
+    <button class="reel__sound" id="reelSound" type="button" aria-pressed="false" aria-label="Ativar som">
+      <svg class="i-off" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 9v6h4l5 4V5L7 9H3z"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M16 9l5 6M21 9l-5 6"/></svg>
+      <svg class="i-on" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 9v6h4l5 4V5L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></svg>
     </button>
   </div>
 </section>
