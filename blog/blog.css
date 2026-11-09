@@ -60,3 +60,6 @@
   .bfilters button{white-space:nowrap}
   .post__cover img{aspect-ratio:4/3}
 }
+/* bloco do blog na home */
+.bloghome{padding:0 var(--gut) clamp(90px,13vw,200px)}
+.bloghome .bcard__img img{height:100%}
