@@ -5,6 +5,7 @@
   function close(){menu.classList.remove('is-open');burger.setAttribute('aria-expanded','false');document.documentElement.style.overflow='';}
   if(burger&&menu){
     burger.addEventListener('click',function(){var o=!menu.classList.contains('is-open');menu.classList.toggle('is-open',o);burger.setAttribute('aria-expanded',o);document.documentElement.style.overflow=o?'hidden':'';});
+    var mc=$('#menuClose'); if(mc) mc.addEventListener('click',close);
     menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close)});
     addEventListener('keydown',function(e){if(e.key==='Escape')close()});
   }

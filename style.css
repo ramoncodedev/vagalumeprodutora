@@ -343,3 +343,8 @@ em{font-family:var(--serif);font-style:italic;font-weight:400}
   .js .step:nth-child(odd) .step__card,.js .step:nth-child(even) .step__card{transform:translateX(40px)}
 }
 @media (prefers-reduced-motion:reduce){.js .step__card{opacity:1;transform:none}.timeline__line i{transform:scaleY(1)}}
+.menu__close{position:absolute;top:16px;right:var(--gut);width:44px;height:44px;background:none;border:1px solid var(--line);border-radius:50%;cursor:pointer;color:var(--fg);transition:background .4s,border-color .4s}
+.menu__close span{position:absolute;left:12px;right:12px;top:21px;height:1.5px;background:currentColor}
+.menu__close span:nth-child(1){transform:rotate(45deg)}
+.menu__close span:nth-child(2){transform:rotate(-45deg)}
+.menu__close:hover{border-color:var(--accent);color:var(--accent)}

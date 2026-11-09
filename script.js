@@ -51,7 +51,9 @@
       burger.setAttribute('aria-expanded', open);
       if (lenis) open ? lenis.stop() : lenis.start();
     });
-    $$('#menu a').forEach(a => a.addEventListener('click', () => { menu.classList.remove('is-open'); burger.setAttribute('aria-expanded', 'false'); }));
+    $$('#menu a').forEach(a => a.addEventListener('click', closeMenu));
+    $('#menuClose').addEventListener('click', closeMenu);
+    addEventListener('keydown', e => { if (e.key === 'Escape' && menu.classList.contains('is-open')) closeMenu(); });
   }
   initMenu();
 
