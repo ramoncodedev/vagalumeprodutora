@@ -1,0 +1,62 @@
+/* Blog – Vagalume Produtora (usa os tokens de /style.css) */
+.blogpage{background:var(--bg)}
+.header__nav a.is-current{color:var(--accent)}
+.menu nav a.is-current{color:var(--accent)}
+.bhero{padding:clamp(130px,16vw,210px) var(--gut) clamp(36px,5vw,64px)}
+.bhero .eyebrow{margin-bottom:22px}
+.bhero h1{font-weight:200;line-height:1.02;letter-spacing:-.03em;font-size:clamp(2.6rem,7vw,6.6rem);max-width:15em}
+.bfeat,.bgrid-wrap,.related{padding:0 var(--gut) clamp(56px,8vw,110px)}
+.bcard{display:flex;flex-direction:column;gap:14px;color:inherit}
+.bcard__img{overflow:hidden;border-radius:14px;aspect-ratio:3/2;background:var(--bg-2)}
+.bcard__img img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+.bcard:hover .bcard__img img{transform:scale(1.05)}
+.bcard__meta{display:flex;gap:12px;align-items:center;font-size:12px;color:var(--mute)}
+.bcard__meta .eyebrow{font-size:11px}
+.bcard h3{font-family:var(--serif);font-weight:400;font-size:clamp(1.6rem,2.3vw,2.2rem);line-height:1.1;letter-spacing:-.01em}
+.bcard p{color:var(--mute);font-size:15px;max-width:34em}
+.bcard:hover h3{color:var(--accent)}
+.bcard--big{display:grid;grid-template-columns:1.4fr 1fr;gap:clamp(24px,4vw,64px);align-items:center}
+.bcard--big .bcard__img{grid-row:1/5;aspect-ratio:16/10}
+.bcard--big h3{font-size:clamp(2rem,4vw,3.6rem)}
+.bcard--big>*:not(.bcard__img){grid-column:2}
+.bgrid-wrap .eyebrow{margin-bottom:20px}
+.bfilters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:clamp(28px,4vw,48px)}
+.bfilters button{font:inherit;font-size:13px;font-weight:400;color:var(--fg);background:none;border:1px solid var(--line);border-radius:999px;padding:9px 20px;cursor:pointer;transition:background .3s,color .3s,border-color .3s}
+.bfilters button:hover{border-color:var(--fg)}
+.bfilters button.is-on{background:var(--accent);border-color:var(--accent);color:#0a0a0a}
+.bgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(32px,4vw,56px) clamp(20px,2.5vw,32px)}
+.bgrid .bcard[hidden]{display:none}
+.blogcta{background:var(--accent);color:var(--ink);padding:clamp(56px,9vw,120px) var(--gut);display:flex;flex-direction:column;align-items:flex-start;gap:32px}
+.blogcta h2{font-weight:200;line-height:1.05;letter-spacing:-.03em;font-size:clamp(2.2rem,5.4vw,5rem);max-width:16em}
+.blogcta .btn{background:var(--ink);color:var(--fg)}
+/* artigo */
+.post__head{padding:clamp(120px,14vw,190px) var(--gut) clamp(28px,4vw,48px);max-width:calc(1100px + 2*var(--gut));margin:0 auto;display:flex;flex-direction:column;align-items:flex-start;gap:18px}
+.pill--sm{padding:9px 18px;font-size:13px}
+.post__head h1{font-weight:200;line-height:1.04;letter-spacing:-.03em;font-size:clamp(2.2rem,5.6vw,5rem)}
+.post__meta{font-size:13px;color:var(--mute)}
+.post__cover{padding:0 var(--gut);max-width:1500px;margin:0 auto clamp(40px,6vw,80px)}
+.post__cover img{width:100%;height:auto;aspect-ratio:16/8;object-fit:cover;border-radius:14px}
+.post__body{max-width:calc(760px + 2*var(--gut));margin:0 auto;padding:0 var(--gut) clamp(56px,8vw,110px)}
+.post__body>*+*{margin-top:1.5em}
+.post__body p,.post__body li{font-size:clamp(16px,1.3vw,19px);line-height:1.75;color:rgba(244,242,238,.82)}
+.post__body .lead{font-size:clamp(18px,1.6vw,22px);color:var(--fg)}
+.post__body h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.9rem,3.2vw,2.8rem);line-height:1.1;letter-spacing:-.01em;margin-top:2em}
+.post__body ul{padding-left:0}
+.post__body li{position:relative;padding-left:26px;margin-top:.6em}
+.post__body li::before{content:"";position:absolute;left:0;top:.8em;width:12px;height:1px;background:var(--accent)}
+.post__body blockquote{border-left:2px solid var(--accent);padding:6px 0 6px clamp(18px,3vw,32px);font-family:var(--serif);font-style:italic;font-size:clamp(1.7rem,3vw,2.6rem);line-height:1.15;color:var(--fg);margin-top:2em}
+.related{background:var(--bg-2);padding-top:clamp(56px,8vw,110px)}
+.related .eyebrow{margin-bottom:14px}
+.related h2{font-weight:200;letter-spacing:-.03em;line-height:1;font-size:clamp(2.4rem,5vw,4.6rem);margin-bottom:clamp(28px,4vw,56px)}
+@media (max-width:900px){
+  .bgrid{grid-template-columns:1fr 1fr}
+  .bcard--big{grid-template-columns:1fr}
+  .bcard--big .bcard__img{grid-row:auto}
+  .bcard--big>*:not(.bcard__img){grid-column:1}
+}
+@media (max-width:620px){
+  .bgrid{grid-template-columns:1fr}
+  .bfilters{flex-wrap:nowrap;overflow-x:auto;margin-right:calc(var(--gut)*-1);padding-right:var(--gut);scrollbar-width:none}
+  .bfilters button{white-space:nowrap}
+  .post__cover img{aspect-ratio:4/3}
+}
