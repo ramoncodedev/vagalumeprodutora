@@ -348,14 +348,3 @@ em{font-family:var(--serif);font-style:italic;font-weight:400}
 .menu__close span:nth-child(1){transform:rotate(45deg)}
 .menu__close span:nth-child(2){transform:rotate(-45deg)}
 .menu__close:hover{border-color:var(--accent);color:var(--accent)}
-
-/* Serviços em fundo claro */
-.services{background:#fff;color:#0a0a0a}
-.services .eyebrow{color:#1f8a00}
-.services h2{color:#0a0a0a}
-.services__list li{border-top-color:rgba(10,10,10,.16)}
-.services__list li:last-child{border-bottom-color:rgba(10,10,10,.16)}
-.services__list li span{color:#1f8a00}
-.services__list h3{color:#0a0a0a}
-.services__list p{color:rgba(10,10,10,.62)}
-.services__list li:hover span{color:#0a0a0a}
